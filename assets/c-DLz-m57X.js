@@ -1,1 +1,0 @@
-import{u as e}from"./vendor-markdown-D90Hn8FD.js";import{r as t,t as n}from"./session-BGAPGfku.js";import{n as r,y as i}from"./index-BUUzqGpD.js";var a=e();function o(){let{id:e}=r.useSearch(),o=n(e);return o?(0,a.jsx)(`main`,{className:`flex h-[calc(100dvh)] flex-col items-center`,children:(0,a.jsx)(t,{id:e,initialMessages:o.messages},e)}):i()}export{o as component};
