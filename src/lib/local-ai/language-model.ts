@@ -1,3 +1,5 @@
+export type LocalAIAvailability = "unavailable" | "downloadable" | "downloading" | "available";
+
 interface CreateLanguageModelOptions {
   system: string;
   expectedInputs?: LanguageModelExpected[];
@@ -9,12 +11,12 @@ export function isLanguageModelSupported(): boolean {
   return typeof globalThis !== "undefined" && "LanguageModel" in globalThis;
 }
 
-export async function getRawAvailability(): Promise<string> {
+export async function getAvailability(): Promise<LocalAIAvailability> {
   if (!isLanguageModelSupported()) {
     return "unavailable";
   }
 
-  return LanguageModel.availability();
+  return (await LanguageModel.availability()) as LocalAIAvailability;
 }
 
 export function createLanguageModelSession({

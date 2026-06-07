@@ -1,5 +1,3 @@
-"use client";
-
 import type { ChatProps } from "@/features/conversation/chat";
 import Chat from "@/features/conversation/chat";
 

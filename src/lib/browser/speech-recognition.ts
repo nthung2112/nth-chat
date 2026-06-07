@@ -15,8 +15,7 @@ export interface SpeechRecognitionController {
   stop: () => void;
 }
 
-const PUNCTUATION_GRAMMAR =
-  "#JSGF V1.0; grammar punctuation; public <punc> = . | , | ! | ; | : ;";
+const PUNCTUATION_GRAMMAR = "#JSGF V1.0; grammar punctuation; public <punc> = . | , | ! | ; | : ;";
 
 export function isSpeechRecognitionSupported(): boolean {
   return typeof window !== "undefined" && "webkitSpeechRecognition" in window;

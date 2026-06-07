@@ -46,7 +46,11 @@ export function PromptEditDialog({ id, open, onOpenChange }: PromptEditDialogPro
         <DialogFooter>
           <DialogClose
             render={
-              <Button type="button" variant="secondary" onClick={() => updateSystemPrompt(id, value)} />
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={() => updateSystemPrompt(id, value)}
+              />
             }
           >
             Save Changes

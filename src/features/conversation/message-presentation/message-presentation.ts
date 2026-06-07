@@ -33,9 +33,11 @@ function extractThinkContent(content: string): string | null {
 }
 
 function toSegments(cleanContent: string): MessageSegment[] {
-  return cleanContent.split("```").map((value, index) =>
-    index % 2 === 0 ? { kind: "markdown", value } : { kind: "code", value }
-  );
+  return cleanContent
+    .split("```")
+    .map((value, index) =>
+      index % 2 === 0 ? { kind: "markdown", value } : { kind: "code", value }
+    );
 }
 
 export function presentMessage(message: ChatMessage): PresentedMessage {

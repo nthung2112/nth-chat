@@ -112,27 +112,19 @@ async function readPromptStream(
   return text;
 }
 
-export async function runPrompt({
-  system,
-  user,
-  responseConstraint,
-  signal,
-}: {
+export interface ConversationStreamRequest {
   system: string;
   user: string;
-  responseConstraint: Record<string, unknown>;
-  signal?: AbortSignal;
-}): Promise<string> {
-  const base = await getOrCreateSession({ system });
-  const session = await base.clone({ signal });
-  try {
-    return await session.prompt(user, { responseConstraint, signal });
-  } finally {
-    session.destroy();
-  }
+  images: Blob[];
+  signal: AbortSignal;
+  onChunk: (text: string) => void;
 }
 
-export async function streamPrompt({
+export interface ConversationTransport {
+  stream: (request: ConversationStreamRequest) => Promise<string>;
+}
+
+export async function stream({
   system,
   user,
   images,
@@ -160,7 +152,10 @@ export async function streamPrompt({
       return text;
     }
 
-    text = await readPromptStream(streamingSession.promptStreaming(promptInput, { signal }), onChunk);
+    text = await readPromptStream(
+      streamingSession.promptStreaming(promptInput, { signal }),
+      onChunk
+    );
     return text;
   } catch (error) {
     if (isAbortError(error)) {
@@ -171,3 +166,31 @@ export async function streamPrompt({
     session.destroy();
   }
 }
+
+/**
+ * Run a one-shot prompt by cloning the cached system session so context doesn't accumulate
+ * across calls. Each call gets a fresh conversation copy of the base session.
+ */
+export async function runPrompt({
+  system,
+  user,
+  responseConstraint,
+  signal,
+}: {
+  system: string;
+  user: string;
+  responseConstraint: Record<string, unknown>;
+  signal?: AbortSignal;
+}): Promise<string> {
+  const base = await getOrCreateSession({ system });
+  const session = await base.clone({ signal });
+  try {
+    return await session.prompt(user, { responseConstraint, signal });
+  } finally {
+    session.destroy();
+  }
+}
+
+export const localAITransport: ConversationTransport = {
+  stream,
+};

@@ -1,9 +1,10 @@
-import type { UIMessage } from "ai";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import type { ChatMessage } from "@/lib/local-ai";
+
 export interface ChatSession {
-  messages: UIMessage[];
+  messages: ChatMessage[];
   createdAt: string;
   role?: string;
 }
@@ -16,7 +17,7 @@ interface ConversationActions {
   getChatById: (chatId: string) => ChatSession | undefined;
   createNewChat: (chatId: string, role: string) => void;
   setChatRole: (chatId: string, role: string | undefined) => void;
-  saveMessages: (chatId: string, messages: UIMessage[]) => void;
+  saveMessages: (chatId: string, messages: ChatMessage[]) => void;
   handleDelete: (chatId: string, messageId?: string) => void;
   clearAll: () => void;
 }

@@ -10,12 +10,7 @@ import {
 import { useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 
-import {
-  useLocalAI,
-  useLocalChat,
-  type ChatMessage,
-  type UseLocalAIResult,
-} from "@/lib/local-ai";
+import { useLocalAI, useLocalChat, type ChatMessage, type UseLocalAIResult } from "@/lib/local-ai";
 import { useComposerStore, useConversationStore, usePromptStore } from "@/stores";
 
 import { useConversationCommand } from "./conversation-commands";

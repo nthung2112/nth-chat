@@ -1,14 +1,13 @@
-import { dataUrlToBlob } from "@/lib/browser";
-
-import type { ConversationTransport } from "./conversation-transport";
 import {
   createTextMessage,
   createUserMessage,
+  dataUrlToBlob,
   getMessageImages,
   getMessageText,
   withMessageText,
   type ChatMessage,
 } from "./message";
+import type { ConversationTransport } from "./session";
 
 export interface ConversationEngineCallbacks {
   onSubmit?: (messages: ChatMessage[]) => void;

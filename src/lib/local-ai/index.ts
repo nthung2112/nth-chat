@@ -1,8 +1,7 @@
-export { getAvailability, isLanguageModelSupported } from "./availability";
-export type { LocalAIAvailability } from "./availability";
-export { useLocalAI } from "./use-local-ai";
-export type { UseLocalAIResult } from "./use-local-ai";
-export { useLocalChat } from "./use-local-chat";
+export { getAvailability, isLanguageModelSupported } from "./language-model";
+export type { LocalAIAvailability } from "./language-model";
+export { useLocalAI, useLocalChat } from "./hooks";
+export type { UseLocalAIResult } from "./hooks";
 export { createConversationEngine } from "./conversation-engine";
 export type {
   ConversationEngine,
@@ -10,14 +9,21 @@ export type {
   ConversationEngineConfig,
   ConversationEngineState,
 } from "./conversation-engine";
-export { localAITransport } from "./conversation-transport";
-export type { ConversationTransport, ConversationStreamRequest } from "./conversation-transport";
-export { destroyAllSessions, streamPrompt } from "./session";
+export { destroyAllSessions, stream, runPrompt, localAITransport } from "./session";
+export type { ConversationTransport, ConversationStreamRequest } from "./session";
 export {
   createTextMessage,
   createUserMessage,
+  dataUrlToBlob,
+  getMediaTypeFromDataUrl,
   getMessageImages,
   getMessageText,
   withMessageText,
 } from "./message";
-export type { ChatMessage, ChatMessageRole } from "./message";
+export type {
+  ChatMessage,
+  ChatMessageRole,
+  FileMessagePart,
+  MessagePart,
+  TextMessagePart,
+} from "./message";

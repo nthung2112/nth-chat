@@ -1,5 +1,5 @@
 export { isClipboardSupported, writeTextToClipboard } from "./clipboard";
-export { dataUrlToBlob, readFileAsDataUrl, readFilesAsDataUrls } from "./file-encoder";
+export { readFileAsDataUrl, readFilesAsDataUrls } from "./file-encoder";
 export {
   createSpeechRecognition,
   isSpeechRecognitionSupported,

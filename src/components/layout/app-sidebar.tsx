@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 
 import { Link, useNavigate } from "@tanstack/react-router";
@@ -143,7 +141,14 @@ interface DefaultChatMenuProps {
   onDelete: () => void;
 }
 
-function DefaultChatMenu({ id, name, isBuiltIn, onRename, onClear, onDelete }: DefaultChatMenuProps) {
+function DefaultChatMenu({
+  id,
+  name,
+  isBuiltIn,
+  onRename,
+  onClear,
+  onDelete,
+}: DefaultChatMenuProps) {
   const [editOpen, setEditOpen] = useState(false);
   const [renameOpen, setRenameOpen] = useState(false);
   const [clearOpen, setClearOpen] = useState(false);
@@ -228,7 +233,11 @@ function UserChatMenu({ onSetDefault, onDelete }: UserChatMenuProps) {
             <Star className="h-4 w-4 shrink-0" />
             Set as default chat
           </DropdownMenuItem>
-          <DropdownMenuItem variant="destructive" className="gap-2" onClick={() => setDeleteOpen(true)}>
+          <DropdownMenuItem
+            variant="destructive"
+            className="gap-2"
+            onClick={() => setDeleteOpen(true)}
+          >
             <Trash2 className="h-4 w-4 shrink-0" />
             Delete chat
           </DropdownMenuItem>

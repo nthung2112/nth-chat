@@ -1,5 +1,3 @@
-"use client";
-
 import clsx from "clsx";
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";

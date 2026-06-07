@@ -1,0 +1,42 @@
+{
+  "name": "@nth-chat/local-ai",
+  "version": "0.1.0",
+  "description": "Framework-agnostic in-browser chat engine over Chrome's on-device Prompt API (window.LanguageModel), with optional React hooks.",
+  "author": "Hung Nguyen (nthung2112)",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": {
+      "types": "./index.ts",
+      "import": "./index.ts"
+    }
+  },
+  "files": [
+    "*.ts",
+    "README.md"
+  ],
+  "keywords": [
+    "prompt-api",
+    "gemini-nano",
+    "on-device",
+    "language-model",
+    "chat",
+    "react",
+    "ai"
+  ],
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@types/dom-chromium-ai": "^0.0.16"
+  }
+}
