@@ -38,11 +38,13 @@ nth-chat/
    |  \- conversation/           # Chat feature UI
    |     \- use-conversation-controller.ts  # Orchestrator: wires UI <-> stores <-> local AI, persistence, nav
    |- lib/
-   |  |- local-ai/               # SOLE boundary touching window.LanguageModel
-   |  |  |- index.ts             # Public barrel (availability, hooks, session, message helpers)
-   |  |  |- session.ts           # Cached session factory, streamPrompt/runPrompt, abort
-   |  |  |- use-local-ai.ts      # Hook: model availability + download lifecycle
-   |  |  \- use-local-chat.ts    # Hook: message list, streaming, stop, reload
+   |  |- local-ai/               # SOLE boundary touching window.LanguageModel (publishable package)
+   |  |  |- index.ts             # Public barrel
+   |  |  |- language-model.ts    # Platform: support detection, availability, session creation
+   |  |  |- session.ts           # Cached session factory, streaming, transport interface + default
+   |  |  |- message.ts           # ChatMessage helpers + data URL utils
+   |  |  |- conversation-engine.ts # Framework-agnostic conversation store
+   |  |  \- hooks.ts             # React hooks: useLocalAI, useLocalChat
    |  |- browser/                # Clipboard, file-encoder (base64), speech-recognition wrappers
    |  |- prompt-roles/           # Built-in system-prompt presets
    |  \- utils.ts                # Shared lib utility

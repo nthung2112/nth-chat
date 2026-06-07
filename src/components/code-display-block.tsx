@@ -1,5 +1,4 @@
-"use client";
-import React, { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { CheckIcon, CopyIcon } from "lucide-react";
 import { useTheme } from "next-themes";

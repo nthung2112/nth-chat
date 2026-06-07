@@ -2,6 +2,21 @@
 
 A privacy-first chat application that runs a large language model entirely in the browser. NTH Chat talks to Chrome's built-in on-device model (the Prompt API / Gemini Nano) through `window.LanguageModel`, so prompts and responses never leave the machine. There is no backend, no API key, and no network round trip for inference.
 
+## Showcase Gallery
+
+The full chat experience runs in the browser: prompt-role presets in the sidebar, on-device model status in the topbar, and a composer with image, voice, and send controls. No backend, no API key.
+
+![NTH Chat conversation view](showcase/chat_dark.png)
+
+<details>
+<summary>Onboarding, light and dark</summary>
+
+| Dark                                                | Light                                                 |
+| --------------------------------------------------- | ----------------------------------------------------- |
+| ![Onboarding dialog (dark)](showcase/home_dark.png) | ![Onboarding dialog (light)](showcase/home_light.png) |
+
+</details>
+
 ## Technology Stack
 
 | Area            | Choice                                                                            |
@@ -14,7 +29,7 @@ A privacy-first chat application that runs a large language model entirely in th
 | Components      | shadcn/ui (`base-vega` style) on Base UI primitives                               |
 | State           | Zustand (with `persist` to `localStorage`)                                        |
 | AI types        | `ai` (Vercel AI SDK `Message` type)                                               |
-| Markdown        | `react-markdown` + `remark-gfm`, `react-code-blocks`                              |
+| Markdown        | `react-markdown` + `remark-gfm`, `react-syntax-highlighter`                       |
 | Forms           | `react-hook-form` + `zod`                                                         |
 | Icons           | `lucide-react`                                                                    |
 | Motion          | `framer-motion`                                                                   |
